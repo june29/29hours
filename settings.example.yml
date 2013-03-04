@@ -1,0 +1,28 @@
+twitter:
+  my_screen_name:
+    june29
+  consumer_key:
+    xxxxx
+  consumer_secret:
+    xxxxx
+  access_key:
+    xxxxx
+  access_secret:
+    xxxxx
+matchers:
+  keywords:
+    - 大和田
+    - じゅーん
+    - 準二級
+    - ガローア
+    - ゴールデンボンバー
+notifiers:
+  boxcar:
+    email:
+      xxxxx
+    provider_key:
+      xxxxx
+    provider_secret:
+      xxxxx
+linker:
+  http

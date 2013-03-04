@@ -1,0 +1,34 @@
+GEM
+  remote: http://rubygems.org/
+  specs:
+    awesome_print (1.1.0)
+    boxcar_api (1.2.0)
+      httparty (>= 0.6.1)
+    coderay (1.0.9)
+    eventmachine (1.0.1)
+    httparty (0.10.2)
+      multi_json (~> 1.0)
+      multi_xml (>= 0.5.2)
+    method_source (0.8.1)
+    multi_json (1.6.1)
+    multi_xml (0.5.3)
+    pry (0.9.12)
+      coderay (~> 1.0.5)
+      method_source (~> 0.8)
+      slop (~> 3.4)
+    roauth (0.0.8)
+    slop (3.4.3)
+    twitter-stream (0.1.12)
+      eventmachine (>= 0.12.8)
+      roauth (>= 0.0.2)
+    yajl-ruby (1.1.0)
+
+PLATFORMS
+  ruby
+
+DEPENDENCIES
+  awesome_print
+  boxcar_api
+  pry
+  twitter-stream
+  yajl-ruby
