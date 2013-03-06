@@ -5,6 +5,10 @@ class BoxcarNotifier
   end
 
   def notify(message, options = {})
-    @boxcar.notify(@email, message, options)
+    @boxcar.notify(@email, message, {
+      icon_url:         options[:icon_url],
+      source_url:       options[:link_url],
+      from_screen_name: options[:from]
+    })
   end
 end
