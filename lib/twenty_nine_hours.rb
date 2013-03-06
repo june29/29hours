@@ -163,7 +163,7 @@ class TwentyNineHours
 
       case data["event"]
       when "favorite"
-        LOGGER.info "@%s (☆) %s" % [source["screen_name"], object["text"]]
+        LOGGER.info "@%s (☆) @%s: %s" % [source["screen_name"], object["user"]["screen_name"], object["text"]]
 
         unless source["screen_name"] == @me
           @notifiers.each do |notifier|
