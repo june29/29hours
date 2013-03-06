@@ -1,10 +1,9 @@
 # -*- coding: utf-8 -*-
 require "logger"
 
-require_relative "notifier/boxcar_notifier"
-require_relative "matcher/keywords_matcher"
-require_relative "linker/http_linker"
-require_relative "linker/tweetbot_linker"
+require_relative "matcher/matcher"
+require_relative "notifier/notifier"
+require_relative "linker/linker"
 
 LOGGER = Logger.new(STDOUT)
 LOGGER.formatter = proc { |severity, datetime, progname, msg|
@@ -16,14 +15,14 @@ STDOUT.sync = true
 class TwentyNineHours
   def initialize(settings)
     @matchers = settings["matchers"].map { |key, value|
-      Object.const_get("%sMatcher" % key.capitalize).new(value)
+      TwentyNineHours.const_get("%sMatcher" % key.capitalize).new(value)
     }
 
     @notifiers = settings["notifiers"].map { |key, value|
-      Object.const_get("%sNotifier" % key.capitalize).new(value)
+      TwentyNineHours.const_get("%sNotifier" % key.capitalize).new(value)
     }
 
-    @linker = Object.const_get("%sLinker" % settings["linker"].capitalize).new
+    @linker = TwentyNineHours.const_get("%sLinker" % settings["linker"].capitalize).new
 
     LOGGER.info status
 
@@ -57,7 +56,7 @@ class TwentyNineHours
     result += "  Linker:\n"
     result += "    %s\n" % @linker.class
 
-    result
+    result.gsub("TwentyNineHours::", "")
   end
 
   class Streamer
