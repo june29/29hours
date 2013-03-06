@@ -122,18 +122,7 @@ class TwentyNineHours
       user = data["user"]
       name = user["screen_name"]
 
-      display_text = text
-
-      if urls = data["entities"]["urls"]
-        urls.each do |entry|
-          url      = entry["url"]
-          expanded = entry["expanded_url"]
-
-          display_text.sub!(url, expanded)
-        end
-      end
-
-      LOGGER.info "@%s: %s" % [name, display_text]
+      LOGGER.info "@%s: %s" % [name, expand_url(text, data["entities"]["urls"])]
 
       @matchers.each do |matcher|
         if matcher.match?(data)
@@ -153,7 +142,7 @@ class TwentyNineHours
       user = data["user"]
       name = user["screen_name"]
 
-      LOGGER.info "@%s (♺) %s" % [name, text]
+      LOGGER.info "@%s (♺) %s" % [name, expand_url(text, data["entities"]["urls"])]
 
       if data["retweeted_status"]["user"]["screen_name"] == @me
         @notifiers.each do |notifier|
@@ -193,6 +182,17 @@ class TwentyNineHours
       when "list_destroyed"
       when "block"
       when "unblock"
+      end
+    end
+
+    def expand_url(text, urls)
+      return text if urls.empty?
+
+      urls.inject(text) do |result, entry|
+        url      = entry["url"]
+        expanded = entry["expanded_url"]
+
+        result.sub(url, expanded)
       end
     end
   end
