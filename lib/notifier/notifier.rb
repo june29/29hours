@@ -3,8 +3,8 @@ class TwentyNineHours
     def initialize
     end
 
-    def notify(message, options = {})
-      puts message, options
+    def notify(title, body, options = {})
+      puts title, message, options
     end
   end
 end

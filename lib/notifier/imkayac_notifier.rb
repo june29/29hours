@@ -8,10 +8,10 @@ class TwentyNineHours
       @sig      = config["sig"]
     end
 
-    def notify(message, options = {})
-      body = options[:from] + "\n" + message
+    def notify(title, body, options = {})
+      message = [title, body].join("\n")
 
-      ImKayac.post(@username, body, {
+      ImKayac.post(@username, message, {
         handler:  options[:link_url],
         password: @password,
         sig:      @sig ? Digest::SHA1.hexdigest(body + @sig) : nil

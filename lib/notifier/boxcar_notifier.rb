@@ -5,12 +5,12 @@ class TwentyNineHours
       @email  = config["email"]
     end
 
-    def notify(message, options = {})
-      @boxcar.notify(@email, message, {
-          icon_url:         options[:icon_url],
-          source_url:       options[:link_url],
-          from_screen_name: options[:from]
-        })
+    def notify(title, body, options = {})
+      @boxcar.notify(@email, body, {
+        from_screen_name: title,
+        icon_url:         options[:icon_url],
+        source_url:       options[:link_url]
+      })
     end
   end
 end
