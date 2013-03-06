@@ -6,5 +6,7 @@ gem "twitter-stream", require: "twitter/json_stream"
 gem "yajl-ruby",      require: "yajl"
 gem "boxcar_api"
 
-gem "pry"
-gem "awesome_print"
+group :development do
+  gem "pry"
+  gem "awesome_print"
+end
