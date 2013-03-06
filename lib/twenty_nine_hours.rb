@@ -15,15 +15,17 @@ STDOUT.sync = true
 
 class TwentyNineHours
   def initialize(settings)
-    matchers = settings["matchers"].map { |key, value|
+    @matchers = settings["matchers"].map { |key, value|
       Object.const_get("%sMatcher" % key.capitalize).new(value)
     }
 
-    notifiers = settings["notifiers"].map { |key, value|
+    @notifiers = settings["notifiers"].map { |key, value|
       Object.const_get("%sNotifier" % key.capitalize).new(value)
     }
 
-    linker = Object.const_get("%sLinker" % settings["linker"].capitalize).new
+    @linker = Object.const_get("%sLinker" % settings["linker"].capitalize).new
+
+    LOGGER.info status
 
     twitter = settings["twitter"]
 
@@ -32,11 +34,30 @@ class TwentyNineHours
       consumer_secret: twitter["consumer_secret"],
       access_key:      twitter["access_key"],
       access_secret:   twitter["access_secret"],
-    }, matchers, notifiers, linker)
+      }, @matchers, @notifiers, @linker)
   end
 
   def watch
     @streamer.start
+  end
+
+  def status
+    result = "TwentyNineHours:\n"
+
+    result += "  Matchers:\n"
+    @matchers.each do |matcher|
+      result += "    %s\n" % matcher.class
+    end
+
+    result += "  Notifiers:\n"
+    @notifiers.each do |notifier|
+      result += "    %s\n" % notifier.class
+    end
+
+    result += "  Linker:\n"
+    result += "    %s\n" % @linker.class
+
+    result
   end
 
   class Streamer
