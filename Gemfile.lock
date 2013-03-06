@@ -9,6 +9,9 @@ GEM
     httparty (0.10.2)
       multi_json (~> 1.0)
       multi_xml (>= 0.5.2)
+    im-kayac (0.0.5)
+      json
+    json (1.7.7)
     method_source (0.8.1)
     multi_json (1.6.1)
     multi_xml (0.5.3)
@@ -29,6 +32,7 @@ PLATFORMS
 DEPENDENCIES
   awesome_print
   boxcar_api
+  im-kayac
   pry
   twitter-stream
   yajl-ruby

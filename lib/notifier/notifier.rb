@@ -10,3 +10,4 @@ class TwentyNineHours
 end
 
 require_relative "boxcar_notifier"
+require_relative "imkayac_notifier"
