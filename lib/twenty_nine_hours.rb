@@ -123,7 +123,18 @@ class TwentyNineHours
       user = data["user"]
       name = user["screen_name"]
 
-      LOGGER.info "@%s: %s" % [name, text]
+      display_text = text
+
+      if urls = data["entities"]["urls"]
+        urls.each do |entry|
+          url      = entry["url"]
+          expanded = entry["expanded_url"]
+
+          display_text.sub!(url, expanded)
+        end
+      end
+
+      LOGGER.info "@%s: %s" % [name, display_text]
 
       @matchers.each do |matcher|
         if matcher.match?(data)
