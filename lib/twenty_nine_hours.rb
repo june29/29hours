@@ -127,6 +127,8 @@ class TwentyNineHours
       @matchers.each do |matcher|
         if matcher.match?(data)
           @notifiers.each do |notifier|
+            LOGGER.info "  Notify by %s" % notifier.class
+
             notifier.notify("✎ by @%s" % name, text,
               icon_url: user["profile_image_url"],
               link_url: @linker.build(data)
@@ -145,6 +147,8 @@ class TwentyNineHours
 
       if data["retweeted_status"]["user"]["screen_name"] == @me
         @notifiers.each do |notifier|
+          LOGGER.info "  Notify by %s" % notifier.class
+
           notifier.notify("♺ by @%s" % name, text,
             icon_url: user["profile_image_url"],
             link_url: @linker.build(data["retweeted_status"])
@@ -164,6 +168,8 @@ class TwentyNineHours
 
         unless source["screen_name"] == @me
           @notifiers.each do |notifier|
+            LOGGER.info "  Notify by %s" % notifier.class
+
             notifier.notify("☆ by @%s" % source["screen_name"], object["text"],
               icon_url: source["profile_image_url"],
               link_url: @linker.build(object)
