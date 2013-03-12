@@ -10,3 +10,4 @@ class TwentyNineHours
 end
 
 require_relative "keywords_matcher"
+require_relative "regexp_matcher"
