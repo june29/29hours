@@ -11,4 +11,4 @@ end
 
 require_relative "http_linker"
 require_relative "tweetbot_linker"
-require_relative "twitterOfficial_linker"
+require_relative "twitter_linker"
