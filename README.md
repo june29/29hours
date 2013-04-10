@@ -7,8 +7,8 @@ Notification specified Twitter application that is running 29 hours everyday.
 The 29hours works with pluggable Matcher, Notifier, and Linker.
 
 - Matchers
-  - KeywordsMatcher
+  - KeywordsMatcher, RegexpMatcher
 - Notifiers
   - BoxcarNotifier, ImkayacNotifier
 - Linker
-  - HttpLinker, TweetbotLinker
+  - HttpLinker, TwitterLinker, TweetbotLinker
