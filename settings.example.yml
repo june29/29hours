@@ -29,5 +29,16 @@ notifiers:
   imkayac:
     username:
       june29
+  pushover:
+    user_token:
+      xxxxx
+    app_token:
+      xxxxx
+    sound:
+      magic
+    priority:
+      1
+    device:
+      Nexus4
 linker:
   http
