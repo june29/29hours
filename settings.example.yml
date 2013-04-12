@@ -26,5 +26,8 @@ notifiers:
       xxxxx
     provider_secret:
       xxxxx
+  imkayac:
+    username:
+      june29
 linker:
   http
