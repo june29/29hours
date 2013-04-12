@@ -16,6 +16,8 @@ matchers:
     - 準二級
     - ガローア
     - ゴールデンボンバー
+  regexp:
+    (?<!とて)もじゃ
 notifiers:
   boxcar:
     email:
