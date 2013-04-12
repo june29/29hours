@@ -11,3 +11,4 @@ end
 
 require_relative "boxcar_notifier"
 require_relative "imkayac_notifier"
+require_relative "pushover_notifier"

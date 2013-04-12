@@ -2,6 +2,8 @@ GEM
   remote: http://rubygems.org/
   specs:
     awesome_print (1.1.0)
+    bini (0.6.0)
+      sys-proctable
     boxcar_api (1.2.0)
       httparty (>= 0.6.1)
     coderay (1.0.9)
@@ -19,8 +21,12 @@ GEM
       coderay (~> 1.0.5)
       method_source (~> 0.8)
       slop (~> 3.4)
+    pushover (0.99.1)
+      bini
+      yajl-ruby
     roauth (0.0.8)
     slop (3.4.3)
+    sys-proctable (0.9.3)
     twitter-stream (0.1.12)
       eventmachine (>= 0.12.8)
       roauth (>= 0.0.2)
@@ -34,5 +40,6 @@ DEPENDENCIES
   boxcar_api
   im-kayac
   pry
+  pushover
   twitter-stream
   yajl-ruby
