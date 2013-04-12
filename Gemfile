@@ -6,6 +6,7 @@ gem "twitter-stream", require: "twitter/json_stream"
 gem "yajl-ruby",      require: "yajl"
 gem "boxcar_api"
 gem "im-kayac"
+gem "pushover"
 
 group :development do
   gem "pry"
