@@ -11,4 +11,4 @@ end
 
 require_relative "keywords_matcher"
 require_relative "regexp_matcher"
-require_relative "user_matcher"
+require_relative "users_matcher"

@@ -1,5 +1,5 @@
 class TwentyNineHours
-  class UserMatcher < Matcher
+  class UsersMatcher < Matcher
     def initialize(screen_names)
       @screen_names = screen_names
     end
