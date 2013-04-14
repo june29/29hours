@@ -18,6 +18,12 @@ matchers:
     - ゴールデンボンバー
   regexp:
     (?<!とて)もじゃ
+  users:
+    - june29
+    - kei_s
+    - darashi
+    - asonas
+    - hmsk
 notifiers:
   boxcar:
     email:
