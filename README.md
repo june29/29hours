@@ -1,5 +1,7 @@
 # ♰ 29hours ♰
 
+[![Dependency Status](https://gemnasium.com/june29/29hours.png)](https://gemnasium.com/june29/29hours)
+
 Notification specified Twitter application that is running 29 hours everyday.
 
 ### ♰ Features ♰
