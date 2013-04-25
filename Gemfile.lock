@@ -1,35 +1,40 @@
 GEM
   remote: http://rubygems.org/
   specs:
+    args_parser (0.1.4)
     awesome_print (1.1.0)
     bini (0.6.0)
       sys-proctable
     boxcar_api (1.2.0)
       httparty (>= 0.6.1)
     coderay (1.0.9)
-    eventmachine (1.0.1)
-    httparty (0.10.2)
+    eventmachine (1.0.3)
+    http_parser.rb (0.5.3)
+    httparty (0.11.0)
       multi_json (~> 1.0)
       multi_xml (>= 0.5.2)
-    im-kayac (0.0.5)
+    im-kayac (0.1.1)
+      args_parser
+      httparty
       json
     json (1.7.7)
     method_source (0.8.1)
-    multi_json (1.6.1)
+    multi_json (1.7.2)
     multi_xml (0.5.3)
-    pry (0.9.12)
+    pry (0.9.12.1)
       coderay (~> 1.0.5)
       method_source (~> 0.8)
       slop (~> 3.4)
     pushover (0.99.1)
       bini
       yajl-ruby
-    roauth (0.0.8)
-    slop (3.4.3)
+    simple_oauth (0.1.9)
+    slop (3.4.4)
     sys-proctable (0.9.3)
-    twitter-stream (0.1.12)
+    twitter-stream (0.1.16)
       eventmachine (>= 0.12.8)
-      roauth (>= 0.0.2)
+      http_parser.rb (~> 0.5.1)
+      simple_oauth (~> 0.1.4)
     yajl-ruby (1.1.0)
 
 PLATFORMS
