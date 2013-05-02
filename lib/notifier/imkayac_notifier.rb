@@ -11,11 +11,11 @@ class TwentyNineHours
     def notify(title, body, options = {})
       message = [title, body].join("\n")
 
-      ImKayac.post(@username, message, {
-        handler:  options[:link_url],
-        password: @password,
-        sig:      @sig ? Digest::SHA1.hexdigest(body + @sig) : nil
-      })
+      imkayac = ImKayac.to(@username)
+      imkayac.password(@password) if @password
+      imkayac.sig(@sig)           if @password
+      imkayac.handler(options[:link_url])
+      imkayac.post(message)
     end
   end
 end

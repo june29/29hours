@@ -13,7 +13,7 @@ GEM
     httparty (0.11.0)
       multi_json (~> 1.0)
       multi_xml (>= 0.5.2)
-    im-kayac (0.1.1)
+    im-kayac (0.1.2)
       args_parser
       httparty
       json
