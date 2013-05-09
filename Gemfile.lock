@@ -19,7 +19,7 @@ GEM
       json
     json (1.7.7)
     method_source (0.8.1)
-    multi_json (1.7.2)
+    multi_json (1.7.3)
     multi_xml (0.5.3)
     pry (0.9.12.1)
       coderay (~> 1.0.5)
