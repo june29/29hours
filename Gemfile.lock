@@ -17,11 +17,11 @@ GEM
       args_parser
       httparty
       json
-    json (1.7.7)
+    json (1.8.0)
     method_source (0.8.1)
     multi_json (1.7.3)
     multi_xml (0.5.3)
-    pry (0.9.12.1)
+    pry (0.9.12.2)
       coderay (~> 1.0.5)
       method_source (~> 0.8)
       slop (~> 3.4)
@@ -29,7 +29,7 @@ GEM
       bini
       yajl-ruby
     simple_oauth (0.1.9)
-    slop (3.4.4)
+    slop (3.4.5)
     sys-proctable (0.9.3)
     twitter-stream (0.1.16)
       eventmachine (>= 0.12.8)
