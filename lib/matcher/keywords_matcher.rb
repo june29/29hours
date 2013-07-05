@@ -1,7 +1,7 @@
 class TwentyNineHours
   class KeywordsMatcher < Matcher
     def initialize(keywords)
-      @regexp = Regexp.compile(keywords.join("|"))
+      @regexp = Regexp.union(keywords)
     end
 
     def match?(tweet)
