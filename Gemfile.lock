@@ -3,7 +3,7 @@ GEM
   specs:
     args_parser (0.1.6)
     awesome_print (1.1.0)
-    bini (0.6.0)
+    bini (0.7.0)
       sys-proctable
     boxcar_api (1.2.0)
       httparty (>= 0.6.1)
@@ -18,18 +18,19 @@ GEM
       httparty
       json
     json (1.8.0)
-    method_source (0.8.1)
+    method_source (0.8.2)
     multi_json (1.7.7)
     multi_xml (0.5.4)
     pry (0.9.12.2)
       coderay (~> 1.0.5)
       method_source (~> 0.8)
       slop (~> 3.4)
-    pushover (0.99.2)
-      bini (~> 0.6.0)
-      yajl-ruby
+    pushover (1.0.0)
+      bini (= 0.7.0)
+      httparty (= 0.11.0)
+      yajl-ruby (= 1.1.0)
     simple_oauth (0.1.9)
-    slop (3.4.5)
+    slop (3.4.6)
     sys-proctable (0.9.3)
     twitter-stream (0.1.16)
       eventmachine (>= 0.12.8)
