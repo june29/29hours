@@ -1,7 +1,7 @@
 GEM
   remote: http://rubygems.org/
   specs:
-    args_parser (0.1.6)
+    args_parser (0.2.0)
     awesome_print (1.1.0)
     bini (0.7.0)
       sys-proctable
@@ -25,7 +25,7 @@ GEM
       coderay (~> 1.0.5)
       method_source (~> 0.8)
       slop (~> 3.4)
-    pushover (1.0.1)
+    pushover (1.0.2)
       bini (= 0.7.0)
       httparty (= 0.11.0)
       yajl-ruby (= 1.1.0)
