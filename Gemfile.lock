@@ -2,7 +2,7 @@ GEM
   remote: http://rubygems.org/
   specs:
     args_parser (0.2.0)
-    awesome_print (1.1.0)
+    awesome_print (1.2.0)
     bini (0.7.0)
       sys-proctable
     boxcar_api (1.2.0)
@@ -19,13 +19,13 @@ GEM
       json
     json (1.8.0)
     method_source (0.8.2)
-    multi_json (1.7.9)
+    multi_json (1.8.0)
     multi_xml (0.5.5)
     pry (0.9.12.2)
       coderay (~> 1.0.5)
       method_source (~> 0.8)
       slop (~> 3.4)
-    pushover (1.0.2)
+    pushover (1.0.3)
       bini (= 0.7.0)
       httparty (= 0.11.0)
       yajl-ruby (= 1.1.0)
