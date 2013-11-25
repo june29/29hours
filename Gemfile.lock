@@ -7,7 +7,7 @@ GEM
       sys-proctable
     boxcar_api (1.2.0)
       httparty (>= 0.6.1)
-    coderay (1.0.9)
+    coderay (1.1.0)
     eventmachine (1.0.3)
     http_parser.rb (0.5.3)
     httparty (0.11.0)
@@ -17,12 +17,12 @@ GEM
       args_parser
       httparty
       json
-    json (1.8.0)
+    json (1.8.1)
     method_source (0.8.2)
     multi_json (1.8.2)
     multi_xml (0.5.5)
-    pry (0.9.12.2)
-      coderay (~> 1.0.5)
+    pry (0.9.12.4)
+      coderay (~> 1.0)
       method_source (~> 0.8)
       slop (~> 3.4)
     pushover (1.0.3)
@@ -30,7 +30,7 @@ GEM
       httparty (= 0.11.0)
       yajl-ruby (= 1.1.0)
     simple_oauth (0.1.9)
-    slop (3.4.6)
+    slop (3.4.7)
     sys-proctable (0.9.3)
     twitter-stream (0.1.16)
       eventmachine (>= 0.12.8)
