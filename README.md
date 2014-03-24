@@ -11,6 +11,6 @@ The 29hours works with pluggable Matcher, Notifier, and Linker.
 - Matchers
   - KeywordsMatcher, RegexpMatcher, UsersMatcher
 - Notifiers
-  - BoxcarNotifier, ImkayacNotifier, PushoverNotifier
+  - BoxcarNotifier, ImkayacNotifier, PushoverNotifier, IdobataNotifier
 - Linker
   - HttpLinker, TwitterLinker, TweetbotLinker

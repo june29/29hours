@@ -7,6 +7,7 @@ gem "yajl-ruby",      require: "yajl"
 gem "boxcar_api"
 gem "im-kayac"
 gem "pushover"
+gem "httpclient"
 
 group :development do
   gem "pry"
