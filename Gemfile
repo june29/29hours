@@ -1,6 +1,6 @@
 source "http://rubygems.org/"
 
-ruby "2.1.1"
+ruby "2.1.2"
 
 gem "twitter-stream", require: "twitter/json_stream"
 gem "yajl-ruby",      require: "yajl"
