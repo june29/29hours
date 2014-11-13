@@ -7,6 +7,7 @@ GEM
       sys-proctable
     boxcar_api (1.2.0)
       httparty (>= 0.6.1)
+    boxcar_notifier (0.0.1)
     coderay (1.1.0)
     eventmachine (1.0.3)
     http_parser.rb (0.5.3)
@@ -45,6 +46,7 @@ PLATFORMS
 DEPENDENCIES
   awesome_print
   boxcar_api
+  boxcar_notifier
   httpclient
   im-kayac
   pry
