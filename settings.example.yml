@@ -32,6 +32,9 @@ notifiers:
       xxxxx
     provider_secret:
       xxxxx
+  boxcar2:
+    accsess_token:
+      xxxxx
   imkayac:
     username:
       june29
