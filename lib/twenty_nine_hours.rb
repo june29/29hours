@@ -13,27 +13,36 @@ LOGGER.formatter = proc { |severity, datetime, progname, msg|
 STDOUT.sync = true
 
 class TwentyNineHours
-  def initialize(settings)
-    @matchers = settings["matchers"].map { |key, value|
-      TwentyNineHours.const_get("%sMatcher" % key.capitalize).new(value)
-    }
+  def initialize(path)
+    @path = path
+    @settings = load_setitngs
 
-    @notifiers = settings["notifiers"].map { |key, value|
-      TwentyNineHours.const_get("%sNotifier" % key.capitalize).new(value)
-    }
-
-    @linker = TwentyNineHours.const_get("%sLinker" % settings["linker"].capitalize).new
-
-    LOGGER.info status
-
-    twitter = settings["twitter"]
-
+    twitter = @settings["twitter"]
     @streamer = Streamer.new(twitter["my_screen_name"], {
       consumer_key:    twitter["consumer_key"],
       consumer_secret: twitter["consumer_secret"],
       access_key:      twitter["access_key"],
       access_secret:   twitter["access_secret"],
-      }, @matchers, @notifiers, @linker)
+      }, settings_watcher)
+    setup_streamer_attributes
+  end
+
+  def setup_streamer_attributes
+    @streamer.matchers = @settings["matchers"].map { |key, value|
+      TwentyNineHours.const_get("%sMatcher" % key.capitalize).new(value)
+    }
+
+    @streamer.notifiers = @settings["notifiers"].map { |key, value|
+      TwentyNineHours.const_get("%sNotifier" % key.capitalize).new(value)
+    }
+
+    @streamer.linker = TwentyNineHours.const_get("%sLinker" % @settings["linker"].capitalize).new
+
+    LOGGER.info status
+  end
+
+  def load_setitngs
+    YAML.load(open(@path))
   end
 
   def watch
@@ -44,23 +53,40 @@ class TwentyNineHours
     result = "TwentyNineHours:\n"
 
     result += "  Matchers:\n"
-    @matchers.each do |matcher|
+    @streamer.matchers.each do |matcher|
       result += "    %s\n" % matcher.class
     end
 
     result += "  Notifiers:\n"
-    @notifiers.each do |notifier|
+    @streamer.notifiers.each do |notifier|
       result += "    %s\n" % notifier.class
     end
 
     result += "  Linker:\n"
-    result += "    %s\n" % @linker.class
+    result += "    %s\n" % @streamer.linker.class
 
     result.gsub("TwentyNineHours::", "")
   end
 
+  def settings_watcher
+    proc {
+      if settings_updated?
+        LOGGER.info "Updating settings"
+        @settings = load_setitngs
+        setup_streamer_attributes
+      end
+    }
+  end
+
+  def settings_updated?
+    @settings != load_setitngs
+  end
+
   class Streamer
-    def initialize(me, oauth, matchers, notifiers, linker)
+    PERIODIC_TASK_PERIOD = 60
+    attr_accessor :matchers, :notifiers, :linker
+
+    def initialize(me, oauth, *periodic_tasks)
       @me      = me
       @options = {
         host:  "userstream.twitter.com",
@@ -68,10 +94,7 @@ class TwentyNineHours
         ssl:   true,
         oauth: oauth
       }
-
-      @matchers  = matchers
-      @notifiers = notifiers
-      @linker    = linker
+      @periodic_tasks = periodic_tasks
     end
 
     def start
@@ -88,6 +111,9 @@ class TwentyNineHours
             LOGGER.error "On error: #{message}"
             exit
           }
+        }
+        EventMachine::add_periodic_timer(PERIODIC_TASK_PERIOD) {
+          @periodic_tasks.each { |task| task.call }
         }
       }
     end
