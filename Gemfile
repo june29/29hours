@@ -1,9 +1,10 @@
 source "http://rubygems.org/"
 
-ruby "2.1.4"
+ruby "2.2.1"
 
 gem "twitter-stream", require: "twitter/json_stream"
 gem "yajl-ruby",      require: "yajl"
+gem "eventmachine", "1.0.5"
 gem "boxcar_api"
 gem "im-kayac"
 gem "pushover"
