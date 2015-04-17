@@ -11,8 +11,16 @@ GEM
     buftok (0.2.0)
     coderay (1.1.0)
     equalizer (0.0.11)
+    erubis (2.7.0)
+    excon (0.45.2)
     faraday (0.9.1)
       multipart-post (>= 1.2, < 3)
+    heroics (0.0.14)
+      erubis (~> 2.7.0)
+      excon
+      moneta
+      multi_json (>= 1.9.2)
+      netrc
     http (0.6.4)
       http_parser.rb (~> 0.6.0)
     http_parser.rb (0.6.0)
@@ -28,10 +36,14 @@ GEM
     memoizable (0.4.2)
       thread_safe (~> 0.3, >= 0.3.1)
     method_source (0.8.2)
+    moneta (0.8.0)
     multi_json (1.11.0)
     multi_xml (0.5.5)
     multipart-post (2.0.0)
     naught (1.0.0)
+    netrc (0.10.3)
+    platform-api (0.2.0)
+      heroics (~> 0.0.10)
     pry (0.10.1)
       coderay (~> 1.1.0)
       method_source (~> 0.8.1)
@@ -40,6 +52,7 @@ GEM
       bini (= 0.7.0)
       httparty (= 0.11.0)
       yajl-ruby (= 1.1.0)
+    rake (10.4.2)
     simple_oauth (0.3.1)
     slop (3.6.0)
     sys-proctable (0.9.6)
@@ -65,6 +78,8 @@ DEPENDENCIES
   boxcar_api
   httpclient
   im-kayac
+  platform-api
   pry
   pushover
+  rake
   twitter
