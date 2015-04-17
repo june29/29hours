@@ -1,15 +1,22 @@
 GEM
   remote: http://rubygems.org/
   specs:
+    addressable (2.3.8)
     args_parser (0.2.0)
     awesome_print (1.6.1)
     bini (0.7.0)
       sys-proctable
     boxcar_api (1.2.0)
       httparty (>= 0.6.1)
+    buftok (0.2.0)
     coderay (1.1.0)
+    equalizer (0.0.11)
     eventmachine (1.0.5)
-    http_parser.rb (0.5.3)
+    faraday (0.9.1)
+      multipart-post (>= 1.2, < 3)
+    http (0.6.4)
+      http_parser.rb (~> 0.6.0)
+    http_parser.rb (0.6.0)
     httparty (0.11.0)
       multi_json (~> 1.0)
       multi_xml (>= 0.5.2)
@@ -19,9 +26,13 @@ GEM
       httparty
       json
     json (1.8.2)
+    memoizable (0.4.2)
+      thread_safe (~> 0.3, >= 0.3.1)
     method_source (0.8.2)
     multi_json (1.11.0)
     multi_xml (0.5.5)
+    multipart-post (2.0.0)
+    naught (1.0.0)
     pry (0.10.1)
       coderay (~> 1.1.0)
       method_source (~> 0.8.1)
@@ -30,13 +41,21 @@ GEM
       bini (= 0.7.0)
       httparty (= 0.11.0)
       yajl-ruby (= 1.1.0)
-    simple_oauth (0.1.9)
+    simple_oauth (0.3.1)
     slop (3.6.0)
     sys-proctable (0.9.6)
-    twitter-stream (0.1.16)
-      eventmachine (>= 0.12.8)
-      http_parser.rb (~> 0.5.1)
-      simple_oauth (~> 0.1.4)
+    thread_safe (0.3.5)
+    twitter (5.14.0)
+      addressable (~> 2.3)
+      buftok (~> 0.2.0)
+      equalizer (~> 0.0.9)
+      faraday (~> 0.9.0)
+      http (~> 0.6.0)
+      http_parser.rb (~> 0.6.0)
+      json (~> 1.8)
+      memoizable (~> 0.4.0)
+      naught (~> 1.0)
+      simple_oauth (~> 0.3.0)
     yajl-ruby (1.1.0)
 
 PLATFORMS
@@ -45,10 +64,9 @@ PLATFORMS
 DEPENDENCIES
   awesome_print
   boxcar_api
-  eventmachine (= 1.0.5)
+  eventmachine
   httpclient
   im-kayac
   pry
   pushover
-  twitter-stream
-  yajl-ruby
+  twitter

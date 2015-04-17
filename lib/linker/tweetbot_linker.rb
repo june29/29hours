@@ -1,7 +1,7 @@
 class TwentyNineHours
   class TweetbotLinker < Linker
     def build(tweet)
-      "tweetbot://%s/status/%s" % [tweet["user"]["screen_name"], tweet["id_str"]]
+      "tweetbot://#{tweet.user.screen_name}/status/#{tweet.id}"
     end
   end
 end

@@ -1,7 +1,7 @@
 class TwentyNineHours
   class TwitterLinker < Linker
     def build(tweet)
-      "twitter://status?id=%d" % [tweet["id_str"]]
+      "twitter://status?id=#{tweet.id}"
     end
   end
 end

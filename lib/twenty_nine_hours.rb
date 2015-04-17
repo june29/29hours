@@ -29,10 +29,10 @@ class TwentyNineHours
     twitter = settings["twitter"]
 
     @streamer = Streamer.new(twitter["my_screen_name"], {
-      consumer_key:    twitter["consumer_key"],
-      consumer_secret: twitter["consumer_secret"],
-      access_key:      twitter["access_key"],
-      access_secret:   twitter["access_secret"],
+      consumer_key:        twitter["consumer_key"],
+      consumer_secret:     twitter["consumer_secret"],
+      access_token:        twitter["access_key"],
+      access_token_secret: twitter["access_secret"],
       }, @matchers, @notifiers, @linker)
   end
 
@@ -61,13 +61,8 @@ class TwentyNineHours
 
   class Streamer
     def initialize(me, oauth, matchers, notifiers, linker)
-      @me      = me
-      @options = {
-        host:  "userstream.twitter.com",
-        path:  "/2/user.json",
-        ssl:   true,
-        oauth: oauth
-      }
+      @me     = me
+      @client = Twitter::Streaming::Client.new(oauth)
 
       @matchers  = matchers
       @notifiers = notifiers
@@ -77,52 +72,40 @@ class TwentyNineHours
     def start
       EventMachine::run {
         EventMachine::defer {
-          @stream = Twitter::JSONStream.connect(@options)
-
-          @stream.each_item { |item|
-            data = Yajl::Parser.parse(item)
+          @client.user do |data|
             handle(data)
-          }
-
-          @stream.on_error { |message|
-            LOGGER.error "On error: #{message}"
-            exit
-          }
+          end
         }
       }
     end
 
     private
     def handle(data)
-      if data["friends"]
+      case data
+      when Twitter::Streaming::FriendList
         handle_friends(data)
         return
-      end
-
-      if data["text"]
-        if data["retweeted_status"]
-          handle_retweet(data)
-        else
+      when Twitter::Tweet
+        if data.retweeted_status.nil?
           handle_tweet(data)
+        else
+          handle_retweet(data)
         end
-        return
-      end
-
-      if data["event"]
+      when Twitter::Streaming::Event
         handle_event(data)
       end
     end
 
     def handle_friends(data)
-      LOGGER.info "You are following %d users." % data["friends"].size
+      LOGGER.info "You are following %d users." % data.size
     end
 
     def handle_tweet(data)
-      text = data["text"]
-      user = data["user"]
-      name = user["screen_name"]
+      text = data.text
+      user = data.user
+      name = user.screen_name
 
-      LOGGER.info "@%s: %s" % [name, expand_url(text, data["entities"]["urls"])]
+      LOGGER.info "@%s: %s" % [name, expand_url(text, data.uris)]
 
       @matchers.each do |matcher|
         if matcher.match?(data)
@@ -130,7 +113,7 @@ class TwentyNineHours
             LOGGER.info "  Notify by %s" % notifier.class
 
             notifier.notify("✎ by @%s" % name, text,
-              icon_url: user["profile_image_url"],
+              icon_url: user.profile_image_url,
               link_url: @linker.build(data)
             )
           end
@@ -139,52 +122,52 @@ class TwentyNineHours
     end
 
     def handle_retweet(data)
-      text = data["text"]
-      user = data["user"]
-      name = user["screen_name"]
+      text = data.text
+      user = data.user
+      name = user.screen_name
 
-      LOGGER.info "@%s (♺) %s" % [name, expand_url(text, data["entities"]["urls"])]
+      LOGGER.info "@%s (♺) %s" % [name, expand_url(text, data.uris)]
 
-      if data["retweeted_status"]["user"]["screen_name"] == @me
+      if data.retweeted_status.user.screen_name == @me
         @notifiers.each do |notifier|
           LOGGER.info "  Notify by %s" % notifier.class
 
           notifier.notify("♺ by @%s" % name, text,
-            icon_url: user["profile_image_url"],
-            link_url: @linker.build(data["retweeted_status"])
+            icon_url: user.profile_image_url,
+            link_url: @linker.build(data.retweeted_status)
           )
         end
       end
     end
 
     def handle_event(data)
-      source = data["source"]
-      target = data["target"]
-      object = data["target_object"]
+      source = data.source
+      target = data.target
+      object = data.target_object
 
-      case data["event"]
-      when "favorite"
-        LOGGER.info "@%s (☆) @%s: %s" % [source["screen_name"], object["user"]["screen_name"], object["text"]]
+      case data.name
+      when :favorite
+        LOGGER.info "@%s (☆) @%s: %s" % [source.screen_name, object.user.screen_name, object.text]
 
-        unless source["screen_name"] == @me
+        unless source.screen_name == @me
           @notifiers.each do |notifier|
             LOGGER.info "  Notify by %s" % notifier.class
 
-            notifier.notify("☆ by @%s" % source["screen_name"], object["text"],
-              icon_url: source["profile_image_url"],
+            notifier.notify("☆ by @%s" % source.screen_name, object.text,
+              icon_url: source.profile_image_url,
               link_url: @linker.build(object)
             )
           end
         end
-      when "unfavorite"
-      when "list_member_added"
-      when "list_member_removed"
-      when "follow"
-      when "list_created"
-      when "list_updated"
-      when "list_destroyed"
-      when "block"
-      when "unblock"
+      when :unfavorite
+      when :list_member_added
+      when :list_member_removed
+      when :follow
+      when :list_created
+      when :list_updated
+      when :list_destroyed
+      when :block
+      when :unblock
       end
     end
 
@@ -192,8 +175,8 @@ class TwentyNineHours
       return text if urls.empty?
 
       urls.inject(text) do |result, entry|
-        url      = entry["url"]
-        expanded = entry["expanded_url"]
+        url      = entry.url.to_s
+        expanded = entry.expanded_url.to_s
 
         result.sub(url, expanded)
       end
