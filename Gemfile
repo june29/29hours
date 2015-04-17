@@ -7,6 +7,8 @@ gem "boxcar_api"
 gem "im-kayac"
 gem "pushover"
 gem "httpclient"
+gem "rake"
+gem "platform-api"
 
 group :development do
   gem "pry"
