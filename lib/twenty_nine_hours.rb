@@ -70,13 +70,9 @@ class TwentyNineHours
     end
 
     def start
-      EventMachine::run {
-        EventMachine::defer {
-          @client.user do |data|
-            handle(data)
-          end
-        }
-      }
+      @client.user do |data|
+        handle(data)
+      end
     end
 
     private

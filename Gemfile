@@ -3,7 +3,6 @@ source "http://rubygems.org/"
 ruby "2.2.1"
 
 gem "twitter"
-gem "eventmachine"
 gem "boxcar_api"
 gem "im-kayac"
 gem "pushover"
