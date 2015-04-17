@@ -5,7 +5,7 @@ class TwentyNineHours
     end
 
     def match?(tweet)
-      @regexp =~ tweet["text"]
+      @regexp =~ tweet.text
     end
   end
 end

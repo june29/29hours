@@ -5,7 +5,7 @@ class TwentyNineHours
     end
 
     def match?(tweet)
-      @screen_names.include?(tweet["user"]["screen_name"])
+      @screen_names.include?(tweet.user.screen_name)
     end
   end
 end
