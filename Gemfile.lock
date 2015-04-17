@@ -11,7 +11,6 @@ GEM
     buftok (0.2.0)
     coderay (1.1.0)
     equalizer (0.0.11)
-    eventmachine (1.0.7)
     faraday (0.9.1)
       multipart-post (>= 1.2, < 3)
     http (0.6.4)
@@ -64,7 +63,6 @@ PLATFORMS
 DEPENDENCIES
   awesome_print
   boxcar_api
-  eventmachine
   httpclient
   im-kayac
   pry
