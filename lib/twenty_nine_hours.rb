@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 require "logger"
 
 require_relative "matcher/matcher"

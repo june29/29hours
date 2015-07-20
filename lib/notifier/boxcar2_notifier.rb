@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 class TwentyNineHours
   class Boxcar2Notifier < Notifier
     def initialize(config)

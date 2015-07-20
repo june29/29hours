@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 class TwentyNineHours
   class SlackNotifier < Notifier
     def initialize(config)
