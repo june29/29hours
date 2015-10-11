@@ -72,6 +72,9 @@ class TwentyNineHours
       @client.user do |data|
         handle(data)
       end
+    rescue EOFError
+      LOGGER.info "EOFError occured. Retry."
+      retry
     end
 
     private
