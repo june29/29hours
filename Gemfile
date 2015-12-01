@@ -2,7 +2,7 @@ source "http://rubygems.org/"
 
 ruby "2.2.2"
 
-gem "twitter"
+gem "twitter", "= 5.14.0"
 gem "boxcar_api"
 gem "im-kayac"
 gem "pushover"
