@@ -13,7 +13,7 @@ GEM
     equalizer (0.0.11)
     erubis (2.7.0)
     excon (0.45.4)
-    faraday (0.9.1)
+    faraday (0.9.2)
       multipart-post (>= 1.2, < 3)
     heroics (0.0.14)
       erubis (~> 2.7.0)
@@ -27,7 +27,7 @@ GEM
     httparty (0.11.0)
       multi_json (~> 1.0)
       multi_xml (>= 0.5.2)
-    httpclient (2.6.0.1)
+    httpclient (2.7.0.1)
     im-kayac (0.1.2)
       args_parser
       httparty
@@ -40,11 +40,11 @@ GEM
     multi_json (1.11.2)
     multi_xml (0.5.5)
     multipart-post (2.0.0)
-    naught (1.0.0)
-    netrc (0.10.3)
+    naught (1.1.0)
+    netrc (0.11.0)
     platform-api (0.3.0)
       heroics (~> 0.0.10)
-    pry (0.10.1)
+    pry (0.10.3)
       coderay (~> 1.1.0)
       method_source (~> 0.8.1)
       slop (~> 3.4)
@@ -55,7 +55,7 @@ GEM
     rake (10.4.2)
     simple_oauth (0.3.1)
     slop (3.6.0)
-    sys-proctable (0.9.8)
+    sys-proctable (0.9.9)
     thread_safe (0.3.5)
     twitter (5.14.0)
       addressable (~> 2.3)
@@ -82,7 +82,7 @@ DEPENDENCIES
   pry
   pushover
   rake
-  twitter
+  twitter (= 5.14.0)
 
 BUNDLED WITH
-   1.10.5
+   1.10.6
