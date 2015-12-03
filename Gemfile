@@ -1,6 +1,6 @@
 source "http://rubygems.org/"
 
-ruby "2.2.2"
+ruby "2.2.3"
 
 gem "twitter", "= 5.14.0"
 gem "boxcar_api"
