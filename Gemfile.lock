@@ -1,7 +1,8 @@
 GEM
   remote: http://rubygems.org/
   specs:
-    addressable (2.4.0)
+    addressable (2.5.0)
+      public_suffix (~> 2.0, >= 2.0.2)
     args_parser (0.2.0)
     awesome_print (1.7.0)
     bini (0.7.0)
@@ -48,6 +49,7 @@ GEM
       coderay (~> 1.1.0)
       method_source (~> 0.8.1)
       slop (~> 3.4)
+    public_suffix (2.0.3)
     pushover (1.0.4)
       bini (= 0.7.0)
       httparty (= 0.11.0)
