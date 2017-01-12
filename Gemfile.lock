@@ -34,7 +34,7 @@ GEM
       args_parser
       httparty
       json
-    json (1.8.3)
+    json (1.8.5)
     memoizable (0.4.2)
       thread_safe (~> 0.3, >= 0.3.1)
     method_source (0.8.2)
